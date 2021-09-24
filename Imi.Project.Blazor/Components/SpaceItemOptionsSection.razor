@@ -1,0 +1,21 @@
+﻿@using Imi.Project.Blazor.Extensions
+<div class="container" style="background-color:green;">
+    <div class="sidebar-left">
+        <br />
+        <div class="row">
+            <div class="col-sm">
+                <h5 class="card-title">User actions</h5>
+                <div class="flex-row-reverse">
+                    <button class="btn btn-success">Favorite</button>
+                    <button class="btn btn-primary">Comment</button>
+                </div>
+                <br />
+                <h5>Admin actions</h5>
+                <div class="flex-row-reverse">
+                    <button class="btn btn-warning" @onclick="e => OnUpdateClick.InvokeAsync(CurrentSpaceItem)">Update</button>
+                    <button class="btn btn-danger" @onclick="e => OnDeleteClick.InvokeAsync(CurrentSpaceItem)">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

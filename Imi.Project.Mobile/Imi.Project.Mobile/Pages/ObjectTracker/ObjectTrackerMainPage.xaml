@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:local="clr-namespace:Imi.Project.Mobile.Pages.ObjectTracker"
+            x:Class="Imi.Project.Mobile.Pages.ObjectTracker.ObjectTrackerMainPage"
+            Title="Space Object Tracker">
+    <!--<TabbedPage.ToolbarItems>
+        <ToolbarItem Text="List Of Objects" Command="{Binding OpenTrackableObjectListCommand}">
+        </ToolbarItem>
+    </TabbedPage.ToolbarItems>-->
+    <local:ObjectTrackerListPage />
+    <local:ObjectTrackerMapPage />
+    <local:ObjectTrackerDetailsPage />
+</TabbedPage>

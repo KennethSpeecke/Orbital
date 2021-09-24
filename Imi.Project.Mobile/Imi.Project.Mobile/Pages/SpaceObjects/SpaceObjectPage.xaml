@@ -1,0 +1,403 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Imi.Project.Mobile.ViewModels.SpaceObjects"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
+             xmlns:core="clr-namespace:Syncfusion.XForms.Core;assembly=Syncfusion.Core.XForms"
+             xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
+             x:Class="Imi.Project.Mobile.Pages.SpaceObjects.SpaceObjectPage"
+             BackgroundImageSource="{core:OnPlatformOrientationStringValue Default=OrbitalBackground1080x1920.jpg, UWP=OrbitalBackground1080x1920.jpg}"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+
+        <ScrollView>
+            <StackLayout>
+
+                <StackLayout Padding="10,10,0,0">
+                    <Label Text="{Binding PageStateTitle}" FontSize="Medium" TextColor="white" />
+                </StackLayout>
+
+                <cards:SfCardLayout SwipeDirection="Left" HeightRequest="{Binding Source={RelativeSource AncestorType={x:Type local:SpaceObjectViewModel}}, Path=CardHeightRequest}" BindableLayout.ItemsSource="{Binding SpaceItems}" x:Name="sfCardLayout">
+
+                    <BindableLayout.ItemTemplate>
+
+                        <DataTemplate>
+                            <cards:SfCardView BorderColor="Black" BorderWidth="5" CornerRadius="30,0,30,0" BackgroundColor="#5f74a1">
+                                <StackLayout Padding="0,10,0,0">
+                                    <Image Source="{Binding ThumbnailImageUri}" HeightRequest="150" WidthRequest="150" />
+                                    <Grid x:Name="defaultSpaceObjectAttributes" BackgroundColor="Gray">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="4*" />
+                                            <RowDefinition Height="4*" />
+                                            <RowDefinition Height="4*" />
+                                            <RowDefinition Height="4*" />
+                                            <RowDefinition Height="4*" />
+                                            <RowDefinition Height="4*" />
+                                            <RowDefinition Height="4*" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+
+                                        <BoxView Grid.Row="0"
+                                                 Grid.Column="0"
+                                                 CornerRadius="10" />
+
+                                        <Label Text="Name "
+                                               Grid.Row="0"
+                                               Grid.Column="0"
+                                               FontSize="16"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center" />
+
+                                        <BoxView Grid.Row="0" Grid.Column="1" />
+                                        <Label Text="{Binding Name}"
+                                               Grid.Row="0"
+                                               Grid.Column="1"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center"
+                                               TextColor="black" />
+
+                                        <!--Name controlls end here-->
+                                        <BoxView Grid.Row="1"
+                                                 Grid.Column="0"
+                                                 CornerRadius="10" />
+
+                                        <Label Text="Short Name "
+                                               Grid.Row="1"
+                                               Grid.Column="0"
+                                               FontSize="16"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center" />
+
+                                        <BoxView Grid.Row="1" Grid.Column="1" />
+                                        <Label Text="{Binding ShortName}"
+                                               Grid.Row="1"
+                                               Grid.Column="1"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center"
+                                               TextColor="black" />
+                                        <!--shortname controls end here-->
+
+                                        <BoxView Grid.Row="2"
+                                                 Grid.Column="0"
+                                                 CornerRadius="10" />
+
+                                        <Label Text="Apogee "
+                                               Grid.Row="2"
+                                               Grid.Column="0"
+                                               FontSize="16"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center" />
+
+                                        <BoxView Grid.Row="2" Grid.Column="1" />
+                                        <Label Text="{Binding Apogee}"
+                                               Grid.Row="2"
+                                               Grid.Column="1"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center"
+                                               TextColor="black" />
+                                        <!--Apogee controls end here-->
+
+                                        <BoxView Grid.Row="3"
+                                                 Grid.Column="0"
+                                                 CornerRadius="10" />
+
+                                        <Label Text="Perigee "
+                                               Grid.Row="3"
+                                               Grid.Column="0"
+                                               FontSize="16"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center" />
+
+                                        <BoxView Grid.Row="3" Grid.Column="1" />
+                                        <Label Text="{Binding Perigee}"
+                                               Grid.Row="3"
+                                               Grid.Column="1"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center"
+                                               TextColor="black" />
+                                        <!--Perigee controls end here-->
+
+                                        <BoxView Grid.Row="4"
+                                                 Grid.Column="0"
+                                                 CornerRadius="10" />
+
+                                        <Label Text="Object type "
+                                               Grid.Row="4"
+                                               Grid.Column="0"
+                                               FontSize="16"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center" />
+
+                                        <BoxView Grid.Row="4" Grid.Column="1" />
+                                        <Label Text="{Binding SpaceType}"
+                                               Grid.Row="4"
+                                               Grid.Column="1"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center"
+                                               TextColor="black" />
+                                        <!--spacetype controls end here-->
+
+                                        <BoxView Grid.Row="5"
+                                                 Grid.Column="0"
+                                                 CornerRadius="10" />
+
+                                        <Label Text="Mass "
+                                               Grid.Row="5"
+                                               Grid.Column="0"
+                                               FontSize="16"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center" />
+
+                                        <BoxView Grid.Row="5" Grid.Column="1" />
+                                        <Label Text="{Binding Mass}"
+                                               Grid.Row="5"
+                                               Grid.Column="1"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center"
+                                               TextColor="black" />
+                                        <!--mass controls end here-->
+
+                                        <BoxView Grid.Row="6"
+                                                 Grid.Column="0"
+                                                 CornerRadius="10" />
+
+                                        <Label Text="Size "
+                                               Grid.Row="6"
+                                               Grid.Column="0"
+                                               FontSize="16"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center" />
+
+                                        <BoxView Grid.Row="6" Grid.Column="1" />
+                                        <Label Text="{Binding Size}"
+                                               Grid.Row="6"
+                                               Grid.Column="1"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center"
+                                               TextColor="black" />
+                                        <!--size controls end here-->
+                                    </Grid>
+
+                                    <Grid x:Name="specificDebrisAttributes" BackgroundColor="Gray" IsVisible="{Binding Source={RelativeSource AncestorType={x:Type local:SpaceObjectViewModel}}, Path=IsDebrisType}">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="4*" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+
+                                        <BoxView Grid.Row="0"
+                                                 Grid.Column="0"
+                                                 CornerRadius="10" />
+
+                                        <Label Text="Will collide "
+                                               Grid.Row="0"
+                                               Grid.Column="0"
+                                               FontSize="16"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center" />
+
+                                        <BoxView Grid.Row="0" Grid.Column="1" />
+                                        <Label Text="{Binding IsOnCollisionCourse}"
+                                               Grid.Row="0"
+                                               Grid.Column="1"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center"
+                                               TextColor="black" />
+                                        <!--onCollisionCourse controls end here-->
+                                    </Grid>
+
+                                    <Grid x:Name="specificPlanetoidsAttributes" BackgroundColor="Gray" IsVisible="{Binding Source={RelativeSource AncestorType={x:Type local:SpaceObjectViewModel}}, Path=IsPlanetoidType}">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="4*" />
+                                            <RowDefinition Height="4*" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+
+                                        <BoxView Grid.Row="0"
+                                                 Grid.Column="0"
+                                                 CornerRadius="10" />
+
+                                        <Label Text="Shape "
+                                               Grid.Row="0"
+                                               Grid.Column="0"
+                                               FontSize="16"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center" />
+
+                                        <BoxView Grid.Row="0" Grid.Column="1" />
+                                        <Label Text="{Binding Shape}"
+                                               Grid.Row="0"
+                                               Grid.Column="1"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center"
+                                               TextColor="black" />
+                                        <!--shape controls end here-->
+
+                                        <BoxView Grid.Row="1"
+                                                 Grid.Column="0"
+                                                 CornerRadius="10" />
+
+                                        <Label Text="Discovered by "
+                                               Grid.Row="1"
+                                               Grid.Column="0"
+                                               FontSize="16"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center" />
+
+                                        <BoxView Grid.Row="1" Grid.Column="1" />
+                                        <Label Text="{Binding Discoverer.Surname}"
+                                               Grid.Row="1"
+                                               Grid.Column="1"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center"
+                                               TextColor="black" />
+                                        <!--onCollisionCourse controls end here-->
+                                    </Grid>
+
+                                    <Grid x:Name="specificUnmannedCraftsAttributes" BackgroundColor="Gray" IsVisible="{Binding Source={RelativeSource AncestorType={x:Type local:SpaceObjectViewModel}}, Path=IsMannedCraft}">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="4*" />
+                                            <RowDefinition Height="8*" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+
+                                        <BoxView Grid.Row="0"
+                                                 Grid.Column="0"
+                                                 CornerRadius="10" />
+
+                                        <Label Text="Mission Information "
+                                               Grid.Row="0"
+                                               Grid.Column="0"
+                                               FontSize="16"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center" />
+
+                                        <BoxView Grid.Row="1" Grid.Column="0" />
+                                        <Label Text="{Binding MissionInformation}"
+                                               Grid.Row="1"
+                                               Grid.Column="0"
+                                               HorizontalOptions="StartAndExpand"
+                                               Padding="10,0,0,10"
+                                               VerticalOptions="Center"
+                                               TextColor="black" />
+                                        <!--MissionInformation controls end here-->
+                                    </Grid>
+                                    <Grid x:Name="UserControlls" Padding="0,5,0,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+                                        <buttons:SfButton
+                                                x:Name="btnFavorite"
+                                                Text="Favorite"
+                                                CornerRadius="20"
+                                                BorderColor="white"
+                                                BorderThickness="1"
+                                                Command="{Binding
+                                                            Source={RelativeSource
+                                                            AncestorType={x:Type
+                                                            local:SpaceObjectViewModel}},
+                                                            Path=OpenFavoriteCurrentObjectCommand}"
+                                                CommandParameter="{Binding Id}">
+                                            <buttons:SfButton.BackgroundGradient>
+                                                <gradient:SfRadialGradientBrush Radius="1.5">
+                                                    <gradient:SfRadialGradientBrush.GradientStops>
+                                                        <gradient:SfGradientStop Color="#0096C7" Offset="0" />
+                                                        <gradient:SfGradientStop Color="#023E8A" Offset="1" />
+                                                    </gradient:SfRadialGradientBrush.GradientStops>
+                                                </gradient:SfRadialGradientBrush>
+                                            </buttons:SfButton.BackgroundGradient>
+                                        </buttons:SfButton>
+                                        <buttons:SfButton
+                                                x:Name="btnComment"
+                                                Text="Comment"
+                                                Grid.Column="1"
+                                                CornerRadius="20"
+                                                BorderColor="white"
+                                                BorderThickness="1"
+                                                Command="{Binding
+                                                            Source={RelativeSource
+                                                            AncestorType={x:Type
+                                                            local:SpaceObjectViewModel}},
+                                                            Path=OpenSpaceObjectCommentSectionCommand}"
+                                                CommandParameter="{Binding Id}">
+                                            <buttons:SfButton.BackgroundGradient>
+                                                <gradient:SfRadialGradientBrush Radius="1.5">
+                                                    <gradient:SfRadialGradientBrush.GradientStops>
+                                                        <gradient:SfGradientStop Color="#0096C7" Offset="0" />
+                                                        <gradient:SfGradientStop Color="#023E8A" Offset="1" />
+                                                    </gradient:SfRadialGradientBrush.GradientStops>
+                                                </gradient:SfRadialGradientBrush>
+                                            </buttons:SfButton.BackgroundGradient>
+                                        </buttons:SfButton>
+                                    </Grid>
+
+                                    <Grid x:Name="AdminControlls"
+                                          IsVisible="{Binding
+                                                        Source={RelativeSource AncestorType={x:Type local:SpaceObjectViewModel}},
+                                                        Path=IsAuthenticatedAsAdmin}">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+                                        <buttons:SfButton x:Name="btnEditObject" Text="Edit"
+                                                CornerRadius="20"
+                                                BorderColor="DarkOrange"
+                                                BorderThickness="1"
+                                                Command="{Binding
+                                                            Source={RelativeSource
+                                                            AncestorType={x:Type
+                                                            local:SpaceObjectViewModel}},
+                                                            Path=OpenEditSpaceObjectPageCommand}"
+                                                CommandParameter="{x:Reference btnEditObject}"
+                                                ClassId="{Binding Id}">
+                                            <buttons:SfButton.BackgroundGradient>
+                                                <gradient:SfRadialGradientBrush Radius="1.5">
+                                                    <gradient:SfRadialGradientBrush.GradientStops>
+                                                        <gradient:SfGradientStop Color="#0096C7" Offset="0" />
+                                                        <gradient:SfGradientStop Color="#023E8A" Offset="1" />
+                                                    </gradient:SfRadialGradientBrush.GradientStops>
+                                                </gradient:SfRadialGradientBrush>
+                                            </buttons:SfButton.BackgroundGradient>
+                                        </buttons:SfButton>
+
+                                        <buttons:SfButton x:Name="btnDelete" Text="Delete"  Grid.Column="1"
+                                                          CornerRadius="20"
+                                                          BorderColor="Red"
+                                                          BorderThickness="1"
+                                                Command="{Binding
+                                                            Source={RelativeSource
+                                                            AncestorType={x:Type
+                                                            local:SpaceObjectViewModel}},
+                                                            Path=OpenDeleteSpaceObjectPageCommand}"
+                                                CommandParameter="{Binding Id}">
+                                            <buttons:SfButton.BackgroundGradient>
+                                                <gradient:SfRadialGradientBrush Radius="1.5">
+                                                    <gradient:SfRadialGradientBrush.GradientStops>
+                                                        <gradient:SfGradientStop Color="#0096C7" Offset="0" />
+                                                        <gradient:SfGradientStop Color="#023E8A" Offset="1" />
+                                                    </gradient:SfRadialGradientBrush.GradientStops>
+                                                </gradient:SfRadialGradientBrush>
+                                            </buttons:SfButton.BackgroundGradient>
+                                        </buttons:SfButton>
+                                    </Grid>
+                                </StackLayout>
+                            </cards:SfCardView>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </cards:SfCardLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

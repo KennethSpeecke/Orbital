@@ -1,0 +1,10 @@
+﻿<div class="col col-lg-4 text-center my-auto">
+    <ResultPlayerImage PlayerChoice="Player1Choice" IsWinner="WinningPlayerId == 1" />
+</div>
+<div class="col col-md-2 text-center my-auto">
+    <div id="winning-text">@(WinningPlayer)</div>
+    <div><button @onclick="NewRound">Again!</button></div>
+</div>
+<div class="col col-lg-4 text-center my-auto">
+    <ResultPlayerImage PlayerChoice="Player2Choice" IsWinner="WinningPlayerId == 2" />
+</div>

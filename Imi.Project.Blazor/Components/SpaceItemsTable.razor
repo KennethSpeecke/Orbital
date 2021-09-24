@@ -1,0 +1,30 @@
+﻿<div class="table-responsive-md">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Type</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var spaceItem in SpaceItems)
+            {
+                <tr>
+                    <td scope="row">@spaceItem.Name</td>
+                    <td>@spaceItem.SpaceItemType</td>
+                    <td>
+                        <button class="btn btn-info" @onclick="e => OnInfoClick.InvokeAsync(spaceItem)">Info</button>
+                        <button class="btn btn-success" @onclick="e => OnFavoriteClick.InvokeAsync(spaceItem)">Favorite</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@code
+{
+    [Parameter]
+    public EventCallback<BaseSpaceItem<Guid>> OnInfoClick { get; set; }
+}

@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="18.4.0.47" />
+    <PackageReference Include="Syncfusion.Xamarin.Core" Version="18.4.0.47" />
+    <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="18.4.0.47" />
+    <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="18.4.0.47" />
+    <PackageReference Include="Syncfusion.Xamarin.SfMaps" Version="18.4.0.47" />
+    <PackageReference Include="Syncfusion.Xamarin.SfParallaxView" Version="18.4.0.47" />
+    <PackageReference Include="Syncfusion.Xamarin.SfRating" Version="18.4.0.47" />
+  </ItemGroup>
+
+</Project>

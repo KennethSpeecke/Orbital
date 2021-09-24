@@ -1,0 +1,75 @@
+﻿<h3>Item Details</h3>
+<div class="card-deck">
+    <div class="card">
+        <img class="card-img-top" src="@SelectRandomItemImage()" alt="Picture of @CurrentSpaceItem.Name">
+        <div class="card-body">
+            <h5 class="card-title">@CurrentSpaceItem.Name</h5>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Shortname</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>@CurrentSpaceItem.ShortName</td>
+                        <td>@CurrentSpaceItem.SpaceItemType</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="card-footer">
+        </div>
+    </div>
+    <div class="card">
+        <img class="card-img-top" src="@SelectRandomItemImage()" alt="Picture of @CurrentSpaceItem.Name">
+        <div class="card-body">
+            <h5 class="card-title">Orbit &amp; Apsis info</h5>
+            <h6 class="card-title">On basis of parent planet</h6>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Apogee</th>
+                        <th>Perigee</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>@CurrentSpaceItem.Apogee Km</td>
+                        <td>@CurrentSpaceItem.Perigee Km</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="card-footer">
+        </div>
+    </div>
+    <div class="card">
+        <img class="card-img-top" src="@SelectRandomItemImage()" alt="Picture of @CurrentSpaceItem.Name">
+        <div class="card-body">
+            <h5 class="card-title">Physical info</h5>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Mass</th>
+                        <th>Size</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>@CurrentSpaceItem.Mass Kg</td>
+                        <td>@CurrentSpaceItem.Size M</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="card-footer">
+        </div>
+    </div>
+</div>
+<hr />
+
+@code {
+
+}

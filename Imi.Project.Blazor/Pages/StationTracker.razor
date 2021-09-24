@@ -1,0 +1,63 @@
+﻿@page "/stationtracker"
+
+<div class="container">
+    <h1>Orbital - Station Tracker</h1>
+
+    <hr />
+    <div class="row">
+        <div class="col">
+            <h4>Information - Legend</h4>
+            <hr />
+            <h4>The blue dot</h4>
+            <p>This is the current location of the iss</p>
+            <hr />
+            <h4>Status message</h4>
+            <p>If the status is loading and red then this means no connection has been made to the location service of open notify.</p>
+            <p>If the status is connected and green then the system is tracking the iss in real time.</p>
+            <p>Since the iss is moving at an incredibly fast speed some delay might be possible.</p>
+        </div>
+        <div class="col-7">
+            <SfMaps>
+                @*<MapsZoomSettings ZoomFactor="0"></MapsZoomSettings>*@
+                <MapsLayers>
+                    <MapsLayer ShapeData='new {dataOptions= "https://cdn.syncfusion.com/maps/map-data/world-map.json"}' TValue="string">
+                        @* Add marker *@
+                        <MapsMarkerSettings>
+                            <MapsMarker Visible="true"
+                                        Height="15"
+                                        Width="10"
+                                        Shape=" MarkerType.Circle"
+                                        LegendText="Iss Position"
+                                        Fill="blue"
+                                        DataSource="Markers" TValue="Marker">
+                            </MapsMarker>
+                        </MapsMarkerSettings>
+                    </MapsLayer>
+                </MapsLayers>
+            </SfMaps>
+        </div>
+        <div class="col">
+            <h4>Iss location</h4>
+            <hr />
+            @if (Markers.Count > 0)
+            {
+                <h5>Latitude: </h5>
+                <p>@Markers[0].Latitude</p>
+                <hr />
+                <h5>Longitude: </h5>
+                <p>@Markers[0].Longitude</p>
+                <hr />
+                @if (Markers[0].Name != null)
+                {
+                    <h5>Status</h5>
+                    <p class="text-danger">@Markers[0].Name</p>
+                }
+                else
+                {
+                    <h5>Status</h5>
+                    <p class="text-success">Connection established</p>
+                }
+            }
+        </div>
+    </div>
+</div>

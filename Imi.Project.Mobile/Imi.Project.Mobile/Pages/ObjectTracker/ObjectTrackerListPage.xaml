@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Imi.Project.Mobile.Pages.ObjectTracker.ObjectTrackerListPage"
+             Title="Current State Of The Tracker">
+    <ContentPage.Content>
+        <StackLayout>
+            <!--<ListView ItemsSource="{Binding SpaceItems}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="{Binding Name}"></Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>-->
+            <Label FontSize="Large">Comming soon.</Label>
+            <ContentView>
+                <Label FontSize="Caption" TextColor="OrangeRed">Because of some complexity issues we are currently only able to track the iss.</Label>
+            </ContentView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

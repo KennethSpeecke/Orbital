@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:maps="clr-namespace:Syncfusion.SfMaps.XForms;assembly=Syncfusion.SfMaps.XForms"
+             xmlns:accordion="clr-namespace:Syncfusion.XForms.Accordion;assembly=Syncfusion.Expander.XForms"
+             x:Class="Imi.Project.Mobile.Pages.ObjectTracker.ObjectTrackerMapPage"
+             Title ="Map View">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid RowSpacing="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="300"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <maps:SfMaps x:Name="SfMapsTracker" BackgroundColor="White">
+                <maps:SfMaps.Layers>
+                    <maps:ShapeFileLayer Uri="ne_110m_land.shp" ShapeType="Polyline">
+                        <maps:ShapeFileLayer.Markers>
+                            <maps:MapMarker Label="You" Latitude="{Binding CurrentUser.GeoLocation.Latitude}" Longitude="{Binding CurrentUser.GeoLocation.Longitude}">
+                            </maps:MapMarker>
+                            <maps:MapMarker Label="Iss Postition" Latitude="{Binding CurrentIssLocation.Latitude}" Longitude="{Binding CurrentIssLocation.Longitude}">
+                            </maps:MapMarker>
+                        </maps:ShapeFileLayer.Markers>
+                        <maps:ShapeFileLayer.MarkerSettings>
+                            <maps:MapMarkerSetting IconColor="Black" MarkerIcon="Circle" IconSize="20" LabelSize="15" LabelColor="Black" />
+                        </maps:ShapeFileLayer.MarkerSettings>
+                    </maps:ShapeFileLayer>
+                </maps:SfMaps.Layers>
+            </maps:SfMaps>
+            <StackLayout Grid.Row="1">
+                <accordion:SfAccordion>
+                    <accordion:SfAccordion.Items>
+                        <accordion:AccordionItem>
+                            <accordion:AccordionItem.Header>
+                                <Grid>
+                                  <Label Text="Tracking: International Space Station" HeightRequest="50" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="Black"></Label>
+                                </Grid>
+                            </accordion:AccordionItem.Header>
+                            <accordion:AccordionItem.Content>
+                                <Grid Padding="10,10,10,10" BackgroundColor="#FFFFFF">
+                                        <Label TextColor="#303030" Text="Current cooördinates." VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="Body" BackgroundColor="LightGray"/>
+                                        <Label TextColor="#303030" Text="Current Latitude" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Grid.Row="1" />
+                                        <Label TextColor="#303030" Text="{Binding CurrentIssLocation.Latitude}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Grid.Row="2"/>
+                                        <Label TextColor="#303030" Text="Current Longitude" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Grid.Row="3" />
+                                        <Label TextColor="#303030" Text="{Binding CurrentIssLocation.Longitude}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Grid.Row="4" />
+                                    </Grid>
+                            </accordion:AccordionItem.Content>
+                        </accordion:AccordionItem>
+                    </accordion:SfAccordion.Items>
+                </accordion:SfAccordion>
+            </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

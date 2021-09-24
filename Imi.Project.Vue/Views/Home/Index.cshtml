@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Orbtial System Manager</h1>
+    <p>Please authenticate yourself to continue.</p>
+</div>
+<div class="text-center">
+    <a class="btn btn-info" asp-controller="Home" asp-action="Authenticate" asp-area="">Authenticate</a>
+</div>
+
+@section scripts{
+    <script src="~/lib/vue/vue.js"></script>
+    <script src="~/lib/axios/axios.min.js"></script>
+    <script src="~/lib/orbital/orbital.js"></script>
+}

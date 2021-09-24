@@ -1,0 +1,137 @@
+﻿@using Models.SpaceObjects
+<h3>Editing object: @ItemToEdit.Name</h3>
+<br />
+<div class="container-fluid gradient-background-only">
+    <EditForm Model="ItemToEdit" OnValidSubmit="@(e => OnSaveClick.InvokeAsync(ItemToEdit))">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        <h3>Base options for current space object.</h3>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="name">Name</label>
+                <InputText @bind-Value="@ItemToEdit.Name"
+                           type="text"
+                           class="form-control"
+                           id="name"
+                           placeholder="@ItemToEdit.Name" />
+            </div>
+            <div class="form-group col-md-6">
+                <label for="shortname">Shortname</label>
+                <InputText @bind-Value="@ItemToEdit.ShortName"
+                           type="text"
+                           class="form-control"
+                           id="shortname"
+                           placeholder="@ItemToEdit.ShortName" />
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="apogee">Apogee in kilometers.</label>
+                <InputNumber @bind-Value="@ItemToEdit.Apogee"
+                             type="number"
+                             class="form-control"
+                             id="apogee"
+                             placeholder="@ItemToEdit.Apogee" />
+            </div>
+            <div class="form-group col-md-6">
+                <label for="perigee">Perigee in kilometers</label>
+                <InputNumber @bind-Value="@ItemToEdit.Perigee"
+                             type="number"
+                             class="form-control"
+                             id="perigee"
+                             placeholder="@ItemToEdit.Perigee" />
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label for="mass">Mass in kilograms</label>
+                <InputNumber @bind-Value="@ItemToEdit.Mass"
+                             type="number"
+                             class="form-control"
+                             id="mass"
+                             placeholer="@ItemToEdit.Mass" />
+            </div>
+            <div class="form-group col-md-3">
+                <label for="size">Size in meters</label>
+                <InputNumber @bind-Value="@ItemToEdit.Size"
+                             type="number"
+                             class="form-control"
+                             id="size"
+                             placeholder="@ItemToEdit.Size" />
+            </div>
+            <div class="form-group col-md-6">
+                <label for="itemtype">Type of the object</label>
+                <InputSelect id="itemtype" class="form-control" @bind-Value="@ItemToEdit.SpaceItemType" placeholder="@ItemToEdit.SpaceItemType">
+                    <option value="@SpaceItemTypes.DEBRIS">Debris</option>
+                    <option value="@SpaceItemTypes.PLANETOID">Planetoid</option>
+                    <option value="@SpaceItemTypes.MANNEDCRAFT">Manned spacecraft</option>
+                    <option value="@SpaceItemTypes.UNMANNEDCRAFT">Unmanned spacecraft</option>
+                </InputSelect>
+            </div>
+        </div>
+        <h3>Type specific options for current space object.</h3>
+        <div class="form-group">
+            @switch (ItemToEdit.SpaceItemType)
+            {
+                case SpaceItemTypes.DEBRIS:
+                    <div class="form-check">
+                        <InputCheckbox @bind-Value="@(((DebrisModel)ItemToEdit).IsOnCollisionCourseWithEarth)"
+                                       class="form-check-input"
+                                       type="checkbox"
+                                       id="oncollisioncourse" />@**Finally the fix!*@
+                                    <label class="form-check-label"
+                                           for="oncollisioncourse">
+                                        Is object on a collision course?
+                                    </label>
+                                </div>
+                                break;
+                            case SpaceItemTypes.PLANETOID:
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="shape">Shape</label>
+                                        <InputText @bind-Value="@(((PlanetoidModel)ItemToEdit).Shape)"
+                                                   type="text"
+                                                   class="form-control"
+                                                   id="shape"
+                                                   placeholder="@ItemToEdit.Name" />
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="discoverer">Discovered by</label>
+                                        <InputText @bind-Value="@(((PlanetoidModel)ItemToEdit).Discoverer.Name)"
+                                                   type="text"
+                                                   class="form-control"
+                                                   id="discoverer"
+                                                   placeholder="@(((PlanetoidModel)ItemToEdit).Discoverer.Name)" />
+                                    </div>
+                                    @*<div class="form-group col-md-6">
+                                            <label for="composission">Compossision</label>
+                                            <InputSelect id="composission"
+                                                         class="form-control"
+                                                         multiple data-live-search="true"
+                                                         @bind-Value="@(((PlanetoidModel)ItemToEdit).Compossision)"
+                                                         placeholder="@(((PlanetoidModel)ItemToEdit).Compossision)">
+                                                <option value="@PlanetoidCompositions.GAS">GAS</option>
+                                                <option value="@PlanetoidCompositions.LIQUID">LIQUID</option>
+                                                <option value="@PlanetoidCompositions.SOLID">SOLID</option>
+                                            </InputSelect>
+                                        </div>*@
+                                </div>
+                                break;
+                            default:
+                                <div class="form-row">
+                                    <div class="form-group col-md-3">
+                                        <label for="missioninfo">Mission Information</label>
+                                        <InputTextArea @bind-Value="@(((SpaceCraftModel)ItemToEdit).MissionInformation)"
+                                                       type="text"
+                                                       class="form-control"
+                                                       id="missioninfo"
+                                                       placeholer="@(((SpaceCraftModel)ItemToEdit).MissionInformation)" />
+                                    </div>
+                                </div>
+                                break;
+                        }
+        </div>
+        <button type="button" class="btn btn-warning" @onclick="OnCancelClick">Cancel</button>
+        <button type="submit" class="btn btn-success">Save</button>
+    </EditForm>
+</div>

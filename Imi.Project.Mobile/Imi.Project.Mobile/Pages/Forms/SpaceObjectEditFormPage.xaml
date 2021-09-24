@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Imi.Project.Mobile.ViewModels.Forms"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+             xmlns:core="clr-namespace:Syncfusion.XForms.Core;assembly=Syncfusion.Core.XForms"
+             xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             x:Class="Imi.Project.Mobile.Pages.Forms.SpaceObjectEditFormPage"
+             BackgroundImageSource="{core:OnPlatformOrientationStringValue Default=OrbitalBackground1080x1920.jpg, UWP=OrbitalBackground1080x1920.jpg}"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout BindingContext="{Binding CurrentSpaceObject}" Padding="0,10,0,0">
+                <!--ObjectName Entry-->
+                <inputLayout:SfTextInputLayout
+                Hint="New object name"
+                HelperText="The full name of the object"
+                Background="white"
+                Opacity=".8">
+                    <Entry Text="{Binding Name}" TextColor="Black" PlaceholderColor="Black" />
+                </inputLayout:SfTextInputLayout>
+
+                <!--ObjectShortname entry-->
+                <inputLayout:SfTextInputLayout
+                Hint="New object short name"
+                HelperText="This represents the short notation of the objects name"
+                Background="white"
+                Opacity=".8">
+                    <Entry Text="{Binding ShortName}" TextColor="Black" />
+                </inputLayout:SfTextInputLayout>
+
+                <!--Object Perigee Entry-->
+                <inputLayout:SfTextInputLayout
+                Hint="New perigee value"
+                HelperText="This is the lowest point of the objects orbit"
+                Background="white"
+                Opacity=".8">
+                    <Entry Text="{Binding Perigee}" TextColor="Black" />
+                </inputLayout:SfTextInputLayout>
+
+                <!--Object Apogee Entry-->
+                <inputLayout:SfTextInputLayout
+                Hint="New apogee value"
+                HelperText="This is the highest point of the objects orbit"
+                Background="white"
+                Opacity=".8">
+                    <Entry Text="{Binding Apogee}" TextColor="Black" />
+                </inputLayout:SfTextInputLayout>
+
+                <!--Object Mass Entry-->
+                <inputLayout:SfTextInputLayout
+                Hint="New mass value"
+                HelperText="This is the total mass of the structure"
+                Background="white"
+                Opacity=".8">
+                    <Entry Text="{Binding Mass}" TextColor="Black" />
+                </inputLayout:SfTextInputLayout>
+
+                <!--Object Size Entry-->
+                <inputLayout:SfTextInputLayout
+                Hint="New size value"
+                HelperText="This is the total height and width of the structure"
+                Background="white"
+                Opacity=".8">
+                    <Entry Text="{Binding Size}" TextColor="Black" />
+                </inputLayout:SfTextInputLayout>
+
+                <!--Object Type Combobox Entry-->
+                <inputLayout:SfTextInputLayout Hint="Space Type" ContainerType="Outlined" Background="white" Opacity=".8">
+                    <combobox:SfComboBox ComboBoxSource="{Binding Source={RelativeSource AncestorType={x:Type local:SpaceObjectEditFormViewModel}}, Path=SpaceItemTypesList}">
+                    </combobox:SfComboBox>
+                </inputLayout:SfTextInputLayout>
+
+                <!--Save the editor button-->
+                <buttons:SfButton
+                        x:Name="btnSaveEdit"
+                        Text="Save"
+                        Grid.Column="1"
+                        CornerRadius="20"
+                        BorderColor="green"
+                        BorderThickness="1"
+                        Command="{Binding
+                                    Source={RelativeSource
+                                    AncestorType={x:Type
+                                    local:SpaceObjectEditFormViewModel}},
+                                    Path=SaveSpaceObjectEditorCommand}"
+                        CommandParameter="{Binding Id}">
+                    <buttons:SfButton.BackgroundGradient>
+                        <gradient:SfRadialGradientBrush Radius="1.5">
+                            <gradient:SfRadialGradientBrush.GradientStops>
+                                <gradient:SfGradientStop Color="#0096C7" Offset="0" />
+                                <gradient:SfGradientStop Color="#023E8A" Offset="1" />
+                            </gradient:SfRadialGradientBrush.GradientStops>
+                        </gradient:SfRadialGradientBrush>
+                    </buttons:SfButton.BackgroundGradient>
+                </buttons:SfButton>
+
+                <!--Cancel the editor button-->
+                <buttons:SfButton
+                        x:Name="btnCancelEdit"
+                        Text="Cancel"
+                        Grid.Column="1"
+                        CornerRadius="20"
+                        BorderColor="red"
+                        BorderThickness="1"
+                        Command="{Binding
+                                    Source={RelativeSource
+                                    AncestorType={x:Type
+                                    local:SpaceObjectEditFormViewModel}},
+                                    Path=CancelSpaceObjectEditorCommand}"
+                        CommandParameter="{Binding Id}">
+                    <buttons:SfButton.BackgroundGradient>
+                        <gradient:SfRadialGradientBrush Radius="1.5">
+                            <gradient:SfRadialGradientBrush.GradientStops>
+                                <gradient:SfGradientStop Color="#0096C7" Offset="0" />
+                                <gradient:SfGradientStop Color="#023E8A" Offset="1" />
+                            </gradient:SfRadialGradientBrush.GradientStops>
+                        </gradient:SfRadialGradientBrush>
+                    </buttons:SfButton.BackgroundGradient>
+                </buttons:SfButton>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

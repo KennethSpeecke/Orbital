@@ -1,0 +1,46 @@
+﻿@page "/"
+@page "/index"
+
+<div class="container">
+    <h1>Orbital Space Mapping - Home</h1>
+
+    <hr />
+    @if (currentSpaceItem == null)
+    {
+        <SpaceItemListCarousel SpaceItems="SpaceItems">
+        </SpaceItemListCarousel>
+        <hr />
+        <div>
+            <h2>All current registered objects</h2>
+        </div>
+        <SpaceItemsTable SpaceItems="SpaceItems"
+                         OnInfoClick="ShowInfoOfItem"
+                         OnFavoriteClick="AddToCurrentUserFavorites">
+        </SpaceItemsTable>
+    }
+    else if (currentSpaceItem.IsUpdateClicked ?? false)
+    {
+        <SpaceItemEditForm ItemToEdit="currentSpaceItem"
+                           OnCancelClick="CancelEditor"
+                           OnSaveClick="SaveEditor">
+        </SpaceItemEditForm>
+    }
+    else
+    {
+        <SpaceItemListCarousel SpaceItems="new BaseSpaceItem<Guid>[] { currentSpaceItem}">
+        </SpaceItemListCarousel>
+        <hr />
+        <div>
+            <h2>Selected object: @currentSpaceItem.Name</h2>
+        </div>
+        <hr />
+        <SpaceItemOptionsSection CurrentSpaceItem="currentSpaceItem"
+                                 OnUpdateClick="UpdateCurrentSpaceItem"
+                                 OnDeleteClick="DeleteCurrentSpaceItem">
+        </SpaceItemOptionsSection>
+
+        <hr />
+        <SpaceItemDetailed CurrentSpaceItem="currentSpaceItem">
+        </SpaceItemDetailed>
+    }
+</div>
