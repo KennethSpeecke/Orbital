@@ -30,8 +30,7 @@ jobs:
       run: |
         cd Imi.Project.Mobile/Imi.Project.Mobile
         nuget restore
-        cd Imi.Project.Mobile/Imi.Project.Mobile/Imi.Project.Mobile.Android
-        msbuild Imi.Project.Mobile.Android.csproj /verbosity:normal /t:Rebuild /p:Configuration=Debug
+        msbuild Imi.Project.Mobile/Imi.Project.Mobile/Imi.Project.Mobile.Android/Imi.Project.Mobile.Android.csproj /verbosity:normal /t:Rebuild /p:Configuration=Debug
         
   UWP:
     runs-on: macos-latest
