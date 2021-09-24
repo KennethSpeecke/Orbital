@@ -1,5 +1,5 @@
 
-name: CI on Push and Pull Request
+name: Deployment Builds
 
 on: [push, pull_request]
 
