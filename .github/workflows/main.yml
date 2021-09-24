@@ -38,6 +38,6 @@ jobs:
     - uses: actions/checkout@v1
     - name: UWP
       run: |
-        cd ..
-        nuget restore
-        msbuild Orbital/Imi.Project.Mobile/Imi.Project.Mobile.UWP.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhoneSimulator /p:Configuration=Debug
+        cd ../Orbital
+        nuget restore Imi.Project.sln
+        msbuild Imi.Project.Mobile/Imi.Project.Mobile.UWP/Imi.Project.Mobile.UWP.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhoneSimulator /p:Configuration=Debug
