@@ -28,7 +28,7 @@ jobs:
     - uses: actions/checkout@v1
     - name: Android
       run: |
-        msbuild Imi.Project.Mobile/Imi.Project.Mobile/Imi.Project.Mobile.Android/Imi.Project.Mobile.Android.csproj /verbosity:normal /t:Rebuild /p:Configuration=Debug
+        msbuild Imi.Project.Mobile/Imi.Project.Mobile.Android/Imi.Project.Mobile.Android.csproj /verbosity:normal /t:Rebuild /p:Configuration=Debug
         
   UWP:
     runs-on: macos-latest
